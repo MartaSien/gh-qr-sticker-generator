@@ -22,3 +22,8 @@ jobs:
           echo "$GITHUB_CONTEXT"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
+      - name: Attach stickers
+        uses: actions/upload-artifact@v3
+        with:
+          name: stickers-merged
+          path: stickers/test/stickers_merged.pdf
