@@ -1,28 +1,8 @@
-name: Generate Stickers
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  build:
+name: Issue comment
+    if: ${{ !github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Generate PDF
-      run: python src/main.py
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: pdf
-        path: stickers_merged.pdf
+      - run: |
+          echo "$GITHUB_CONTEXT"
+        env:
+          NUMBER: ${{ toJson(github) }}
