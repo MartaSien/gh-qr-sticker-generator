@@ -1,8 +1,10 @@
-name: Issue comment
-    if: ${{ !github.event.issue.pull_request }}
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo "$GITHUB_CONTEXT"
-        env:
-          NUMBER: ${{ toJson(github) }}
+on: issue_comment
+jobs:
+  name: Issue comment
+      if: ${{ !github.event.issue.pull_request }}
+      runs-on: ubuntu-latest
+      steps:
+        - run: |
+            echo "$GITHUB_CONTEXT"
+          env:
+            NUMBER: ${{ toJson(github) }}
