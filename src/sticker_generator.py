@@ -1,4 +1,4 @@
-from local import source_sans_pro, stickers_folder, tree_sha
+from local import source_sans_pro, stickers_folder
 import os
 import io
 from PIL import Image, ImageFont, ImageDraw  # Generating images
@@ -33,15 +33,15 @@ def generate_stickers(record_list):
     Generate QR stickers based on a dictionary of sticker data.
     """
     for record in record_list:
-        print(record["label"] + ": " + record["url"])
+        print(record["sticker-label"] + ": " + record["sticker-url"])
         generate_sticker(record)
 
 def generate_sticker(record):
     """
     Generate a single QR sticker and save it in a predefined repository folder.
     """
-    project_name = record["label"]
-    url = record["url"]
+    project_name = record["sticker-label"]
+    url = record["sticker-url"]
     
     qrcode = segno.make_qr(url)
     out = io.BytesIO()

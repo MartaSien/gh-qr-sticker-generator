@@ -9,13 +9,13 @@ import os
 
 def main():
     record_1 = {
-        "url": "https://github.com/MartaSien",
-        "label": "MartaSien",
+        "sticker-url": "https://github.com/MartaSien",
+        "sticker-label": "MartaSien",
 
     }
     record_2 = {
-        "url": "https://github.com/MartaSien?tab=projects",
-        "label": "MartaProjects",
+        "sticker-url": "https://github.com/MartaSien?tab=projects",
+        "sticker-label": "MartaProjects",
     }
     stickers_table = [record_1, record_2]
     generate_stickers(stickers_table)
