@@ -20,7 +20,6 @@ def main():
     stickers_table = [record_1, record_2]
     generate_stickers(stickers_table)
     merge_to_a4()
-    os.startfile(stickers_folder)
 
 if __name__ == "__main__":
     main()
