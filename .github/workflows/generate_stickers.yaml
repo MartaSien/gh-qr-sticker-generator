@@ -18,6 +18,11 @@ jobs:
     if: ${{ !github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
+      - name: print body
+        env:
+          BODY: ${{ github.event.comment.body }}
+        run: echo "$BODY"
+
       - name: checkout repo content
         uses: actions/checkout@v4 # checkout the repository content to github runner
 
@@ -34,7 +39,13 @@ jobs:
       - name: execute py script # run main.py
         run: python src/main.py
 
-      - name: Upload artifact
+      - name: Upload single stickers
+        uses: actions/upload-artifact@v3
+        with:
+          name: single_stickers
+          path: stickers/*.png
+
+      - name: Upload stickers_merged
         uses: actions/upload-artifact@v3
         with:
           name: stickers_merged
