@@ -19,6 +19,10 @@ qr_size = 370  # px - QR code size
 sticker_h = 500  # px
 sticker_w = 400  # px
 font_height = 40  # px
+
+source_sans_pro = os.path.join(
+    "assets", "Source_Sans_Pro", "SourceSansPro-Regular.ttf"
+)
 sticker_font = ImageFont.truetype(source_sans_pro, font_height)
 
 # ------------------------CALCULATIONS BASED ON VARIABLES--------------------------#
@@ -33,16 +37,13 @@ def generate_stickers(record_list):
     Generate QR stickers based on a dictionary of sticker data.
     """
     for record in record_list:
-        print(record["sticker-label"] + ": " + record["sticker-url"])
-        generate_sticker(record)
+        generate_sticker(record[0], record[1])
 
-def generate_sticker(record):
+def generate_sticker(project_name, url):
     """
     Generate a single QR sticker and save it in a predefined repository folder.
-    """
-    project_name = record["sticker-label"]
-    url = record["sticker-url"]
-    
+    """    
+    print(project_name + ": " + url)
     qrcode = segno.make_qr(url)
     out = io.BytesIO()
     qrcode.save(out, border=0, scale=5, kind="png")
